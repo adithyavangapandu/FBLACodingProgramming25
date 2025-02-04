@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>JWT Login</title>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold text-center mb-6">Login</h2>
+        <form id="loginForm" class="space-y-4">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit"
+                class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-300">
+                Login
+            </button>
+        </form>
+        <p id="statusMessage" class="text-center mt-4 text-sm text-gray-500"></p>
+    </div>
+
+    <script>
+        const loginForm = document.getElementById('loginForm');
+        const statusMessage = document.getElementById('statusMessage');
+
+        loginForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const formData = new FormData(loginForm);
+            const username = formData.get('username');
+            const password = formData.get('password');
+
+            try {
+                const response = await fetch('/api/token/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username, password }),
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    localStorage.setItem('access', data.access); // Save the access token
+                    localStorage.setItem('refresh', data.refresh); // Save the refresh token
+                    statusMessage.textContent = 'Login successful!';
+                    statusMessage.classList.add('text-green-500');
+                } else {
+                    const error = await response.json();
+                    statusMessage.textContent = error.detail || 'Login failed!';
+                    statusMessage.classList.add('text-red-500');
+                }
+            } catch (error) {
+                statusMessage.textContent = 'An error occurred. Please try again.';
+                statusMessage.classList.add('text-red-500');
+            }
+        });
+    </script>
+</body>
+</html>

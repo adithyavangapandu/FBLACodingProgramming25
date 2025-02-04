@@ -1,0 +1,43 @@
+Try other urls, show that is blocked
+Show register page
+Login
+Mention Navbar, widgets, and dynamic values
+- Dynamic values: Total, Outgoing money in red, Incoming money in green
+Look into middle widget, click See all Transactions
+Notice the Home and Walmart expenses, and Quiktrip income.
+Says visualize your financials, let's go to Insights page.
+We can see on the left side two tiles.
+The first tile shows the incoming and outgoing money for the last two months.
+If I click on that, it will show an enlarged version. As seen, the expenses from Home and Walmart are here, and Quiktrip income here.
+Now let's go to the second tile.
+This tile shows spending by category, separated by incoming money and outgoing money all time.
+The Groceries is Walmart and Rent is Home. The Income is all Quiktrip.
+Next, we will feature the CRUD operations.
+First, let's create a transaction then see our insights page update.
+If I click on Add Transaction we are taken to a page where we will say we went to Main Event, 20.00, Entertainment.
+If I click on submit, it will show an error because I must use a negative value for an expense.
+I can change that, then it will submit.
+Let's quickly see the changes on the insights page.
+Notice how the pie graph has a different colored slice.
+Also notice how February has a red bar, not just a green one.
+Back to the transactions page, let's read one of our transactions. Just click on it. The data is prepopulated.
+To modify, simply just edit the input field and click modify. It will appear within the list of transactions.
+Next I will demonstrate the search and filter
+If I type in Quik, it shows both transactions named Quiktrip. Then I can filter further by entering a min amount of 0 to get only the income.
+Reset will bring back the original list.
+Here I can choose categories. Let's choose Rent. Nice
+The report generation feature is with this download button.
+I can click on it and it will download to my computer.
+Last part of the CRUD operations is delete.
+To delete, click on the transaction and delete it.
+Once again, the dynamic values are rendered with the page, so they will always be updated.
+Now, let's add a category. Category is a separate table in my database which is connected to transactions via foreign key.
+I can check the outgoing box or not to indicate incoming. {Type Gifts} Let's uncheck it. Then, let's create a quick transaction.
+Birthday, 10.00, Gifts.
+Notice everything updates, and on the insights page, there is a new piece to the pie.
+Now let's come back and delete it. When I delete it, the transaction remains, I will just have to reassign its category.
+This concludes the demo
+
+Thank you for viewing the presentation of my financial tracking application.
+
+
